@@ -36,6 +36,14 @@ def health_check():
 
 @app.post("/telemetry")
 def receive_telemetry(data: TelemetryData):
-    # Print telemetry data to the server console
-    print(f"Telemetry received: {data.model_dump()}")
+    # Print detailed telemetry data for Render logs
+    print("--- NEW TELEMETRY RECEIVED ---")
+    print(f"Raw Payload: {data.model_dump_json()}")
+    print(f"Device Type: {data.device_type}")
+    print(f"File Size (MB): {data.file_size_mb}")
+    print(f"Render Time (Seconds): {data.render_time_seconds}")
+    print(f"Success Status: {data.is_success}")
+    print(f"Error Message: {data.error_message if data.error_message else 'None'}")
+    print("------------------------------")
+    
     return {"message": "Telemetry received successfully"}
