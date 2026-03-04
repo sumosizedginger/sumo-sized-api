@@ -8,7 +8,11 @@ app = FastAPI()
 
 # Strictly allow only your GitHub Pages origin
 origins = [
-    "https://sumosizedginger.github.io"
+    "https://sumosizedginger.github.io",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
 ]
 
 app.add_middleware(
